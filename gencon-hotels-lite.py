@@ -30,7 +30,7 @@ while True:
         hotel_room_objects = modules.filter_hotel_room_objects(hotel_room_objects, gchotels_config)
         if (gchotels_config.alerts_email or gchotels_config.alerts_sms or gchotels_config.alerts_twitter) \
                 and hotel_room_objects:
-            modules.send_alerts(hotel_room_objects, config)
+            modules.send_alerts(hotel_room_objects, gchotels_config)
             alerts_triggered = 1
         modules.clear()
         print(modules.table_creation(hotel_room_objects))

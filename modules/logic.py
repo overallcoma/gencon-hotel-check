@@ -21,6 +21,16 @@ def all_dates_list(start, end):
     return date_range
 
 
+def string_to_list(string):
+    string = string.replace(" ", "")
+    list_return = []
+    if "," in string:
+        list_return = string.split(",")
+    else:
+        list_return.append(string)
+    return list_return
+
+
 def clear():
     if os.name == 'nt':
         _ = os.system('cls')

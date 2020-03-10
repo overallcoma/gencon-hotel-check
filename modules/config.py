@@ -35,7 +35,7 @@ def create_config_object(config):
     if gchotels_config.alerts_email:
         gchotels_config.email_from_user = (config["email-send-config"])["from-user"]
         gchotels_config.email_from_password = (config["email-send-config"])["from-password"]
-        gchotels_config.email_send_to = (config["email-send-config"])["send-to"]
+        gchotels_config.email_send_to = modules.string_to_list((config["email-send-config"])["send-to"])
         gchotels_config.email_smtp_server = (config["email-send-config"])["smtp-server"]
         gchotels_config.email_smtp_port = (config["email-send-config"])["smtp-port"]
     gchotels_config.alerts_sms = modules.string_to_bool((config["alerts-config"])["send-sms"])
@@ -43,7 +43,7 @@ def create_config_object(config):
         gchotels_config.sms_twilio_sid = (config["sms-send-config"])["twilio-account-sid"]
         gchotels_config.sms_twilio_auth = (config["sms-send-config"])["twilio-account-auth"]
         gchotels_config.sms_from_number = (config["sms-send-config"])["from-number"]
-        gchotels_config.sms_to_numbers = (config["sms-send-config"])["to-numbers"]
+        gchotels_config.sms_to_numbers = modules.string_to_list((config["sms-send-config"])["to-numbers"])
     gchotels_config.alerts_twitter = modules.string_to_bool((config["alerts-config"])["send-twitter"])
     if gchotels_config.alerts_twitter:
         gchotels_config.twitter_consumer_key = (config["twitter-send-config"])["twitter-consumer-key"]

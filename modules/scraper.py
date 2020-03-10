@@ -44,8 +44,8 @@ def get_hotel_room_objects(config):
     response = requests.get(housing_url_initial, headers=user_agent_header)
     response_cookies = response.cookies
 
-    post_data = construct_search_post(config)
     requests.post(housing_url_available_post, data='', headers=user_agent_header, cookies=response_cookies)
+    post_data = construct_search_post(config)
     response = requests.post(post_room_select_url, data=post_data, headers=user_agent_header, cookies=response_cookies)
     try:
         hotels = passkey_parser(response.text)
