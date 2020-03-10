@@ -22,17 +22,16 @@ def filter_hotel_room_objects_distance(hotel_room_objects, config):
         if config.search_skywalk:
             if 'Skywalk' in hotel_room.distance:
                 filtered_list.append(hotel_room)
+        if config.search_blocks or config.search_miles:
+            distance_unit = hotel_room.distance.split(" ")[0]
+            distance_unit = float(distance_unit)
         if config.search_blocks:
             if 'Block' in hotel_room.distance:
-                block_distance = hotel_room.distance.split(" ")[0]
-                block_distance = float(block_distance)
-                if block_distance < config.search_blocks_max:
+                if distance_unit < config.search_blocks_max:
                     filtered_list.append(hotel_room)
         if config.search_miles:
             if 'Mile' in hotel_room.distance:
-                miles_distance = hotel_room.distance.split(" ")[0]
-                miles_distance = float(miles_distance)
-                if miles_distance < config.search_miles_max:
+                if distance_unit < config.search_miles_max:
                     filtered_list.append(hotel_room)
     return filtered_list
 

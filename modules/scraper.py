@@ -4,14 +4,16 @@ import re
 import datetime
 
 
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.37 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.37"
+user_agent = \
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.37 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.37"
 user_agent_header = {
     'User-Agent': user_agent
 }
 
 
 def passkey_parser(html_content):
-    parsed_content = re.findall('<script id="last-search-results" type="application/json">(.*?)</script>', html_content)[0]
+    parsed_content = re.findall('<script id="last-search-results" type="application/json">(.*?)</script>',
+                                html_content)[0]
     parsed_content = json.loads(parsed_content)
     return parsed_content
 
